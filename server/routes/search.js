@@ -1,4 +1,5 @@
 const fetch = require("node-fetch");
+const config = require("../config.json");
 
 /**
  *
@@ -14,7 +15,7 @@ const searchItems = async (searchQuery) => {
   try {
     // Llamada a la busqueda de la API de ML
     const response = await fetch(
-      `https://api.mercadolibre.com/sites/MLA/search?q=${searchQuery}`
+      `${config.URL_API_ML}sites/MLA/search?q=${searchQuery}`
     );
     // Se captura la respuesta
     const json = await response.json();

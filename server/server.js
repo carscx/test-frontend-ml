@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
-const port = 5000;
+const config = require("./config.json");
+const port = config.PORT;
 
 // Funcionalidad para la búsqueda de productos
 const search = require("./routes/search");
