@@ -101,4 +101,4 @@ const searchItems = async (searchQuery) => {
   }
 };
 
-module.exports = { searchItems };
+module.exports = { searchItems, getBreadcrumbs };
