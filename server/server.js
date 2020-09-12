@@ -6,6 +6,12 @@ const port = config.PORT;
 // Funcionalidad para la búsqueda de productos
 const search = require("./routes/search");
 
+// Funcionalidad para validar Author
+
+const validateAuthor = (name, lastname) => {
+  return authorInfo.name === name && authorInfo.lastname === lastname;
+};
+
 /**
  * Ruta para la busqueda de productos
  * GET: /api/items
@@ -14,12 +20,16 @@ const search = require("./routes/search");
 
 app.get("/api/items", (request, response) => {
   const searchQuery = request.query.q;
-  if (searchQuery !== null) {
+
+  const name = request.header("x-author-name");
+  const lastname = request.header("x-author-lastname");
+
+  if (searchQuery !== null && validateAuthor(name, lastname)) {
     search.searchItems(searchQuery).then((results) => {
       response.status(200).json(results);
     });
   } else {
-    response.status(503).end();
+    response.status(401).end();
   }
 });
 
