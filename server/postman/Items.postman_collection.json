@@ -1,0 +1,206 @@
+{
+	"info": {
+		"_postman_id": "8ab425d2-91e3-4800-aa24-24e5f3ee247d",
+		"name": "Items",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "API ML",
+			"item": [
+				{
+					"name": "Busqueda",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.mercadolibre.com/sites/MLA/search?q=Apple Ipod",
+							"protocol": "https",
+							"host": [
+								"api",
+								"mercadolibre",
+								"com"
+							],
+							"path": [
+								"sites",
+								"MLA",
+								"search"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "Apple Ipod"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Categories",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"type": "text",
+								"value": ""
+							}
+						],
+						"url": {
+							"raw": "https://api.mercadolibre.com/categories/MLA7262",
+							"protocol": "https",
+							"host": [
+								"api",
+								"mercadolibre",
+								"com"
+							],
+							"path": [
+								"categories",
+								"MLA7262"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Item by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.mercadolibre.com/items/MLA877503989",
+							"protocol": "https",
+							"host": [
+								"api",
+								"mercadolibre",
+								"com"
+							],
+							"path": [
+								"items",
+								"MLA877503989"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Item by ID Description",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.mercadolibre.com/items/MLA877503989/description",
+							"protocol": "https",
+							"host": [
+								"api",
+								"mercadolibre",
+								"com"
+							],
+							"path": [
+								"items",
+								"MLA877503989",
+								"description"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Local",
+			"item": [
+				{
+					"name": "Busqueda",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/items?q=Yamaha Pdx-11 Pdx11",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"items"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "Yamaha Pdx-11 Pdx11"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Item by ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-author-name",
+								"type": "text",
+								"value": "Carlos"
+							},
+							{
+								"key": "x-author-lastname",
+								"value": "Santos",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/items/MLA877503989",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"items",
+								"MLA877503989"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "88da0b6f-20d3-4b52-8eb0-2e0bcab7cb9d",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "61ccca72-e5ee-4c9a-a1bb-be0bceab7181",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
