@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 const port = 5000;
 
+// Funcionalidad para la búsqueda de productos
+const search = require("./routes/search");
+
 /**
  * Ruta para la busqueda de productos
  * GET: /api/items
@@ -11,7 +14,9 @@ const port = 5000;
 app.get("/api/items", (request, response) => {
   const searchQuery = request.query.q;
   if (searchQuery !== null) {
-    response.status(200).json({ searchQuery });
+    search.searchItems(searchQuery).then((results) => {
+      response.status(200).json(results);
+    });
   } else {
     response.status(503).end();
   }
