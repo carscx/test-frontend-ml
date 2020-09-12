@@ -1,6 +1,9 @@
 const fetch = require("node-fetch");
 const config = require("../config.json");
+const pkg = require("../package.json");
 const { isFloat, splitFloat } = require("../utils/numbers.js");
+
+const authorInfo = pkg.author; // Obtiene los datos del autor desde el package.json
 
 /**
  *
@@ -42,19 +45,28 @@ const searchItems = async (searchQuery) => {
     // Se captura la respuesta
     const json = await response.json();
 
-    // Se realiza un filtro para obtener el listado de categorías.
-    const categories = json.available_filters.filter(
-      (item) => item.id === "category"
-    );
+    /**
+     * Se realiza un filtro para obtener el listado de categorías.
+     * En algunos productos las categorias se reciben de 'filters'
+     * y en otros se reciben de 'available_filters'
+     */
+
+    const filters = json.filters.length > 0;
+    const categories = filters
+      ? json.filters.filter((item) => item.id === "category")
+      : json.available_filters.filter((item) => item.id === "category");
 
     // Se llena el array de listado de categorías
     categories[0].values.map((item) => {
       listCategories.push(item);
     });
 
-    // Se obtienen los items en el formato requerido
+    /**
+     * Se obtienen los items limitados a la configuracion
+     * y se acomoda a la estructura correcta
+     */
 
-    const items = json.results.map((item) => ({
+    const items = json.results.slice(0, config.LIMIT_ITEMS).map((item) => ({
       id: item.id,
       title: item.title,
       price: {
@@ -64,6 +76,7 @@ const searchItems = async (searchQuery) => {
           : item.price,
         decimals: isFloat(item.price) ? splitFloat(item.price).decimal : 0,
       },
+      address: item.address.state_name,
       picture: item.thumbnail,
       condition: item.condition,
       free_shipping: item.shipping.free_shipping,
@@ -75,6 +88,7 @@ const searchItems = async (searchQuery) => {
     // Se crea el objeto con los resultados obtenidos
 
     const results = {
+      author: authorInfo,
       categories: listCategories,
       items: items,
       breadcrumbs: breadcrumbs,
