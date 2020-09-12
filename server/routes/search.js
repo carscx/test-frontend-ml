@@ -4,6 +4,27 @@ const { isFloat, splitFloat } = require("../utils/numbers.js");
 
 /**
  *
+ * Obtiene el breadcrumbs basado en la búsqueda
+ * @param {string} idCategory // Ejemplo. MLA1384
+ *
+ */
+
+const getBreadcrumbs = async (idCategory) => {
+  try {
+    // Llamada a las categorias de la API de ML
+    const response = await fetch(
+      `${config.URL_API_ML}categories/${idCategory}`
+    );
+    const json = await response.json();
+    // Respuesta JSON
+    return json.path_from_root;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+/**
+ *
  * Busqueda de productos
  * @param {string} searchQuery // Ejemplo "coches"
  *
@@ -48,11 +69,15 @@ const searchItems = async (searchQuery) => {
       free_shipping: item.shipping.free_shipping,
     }));
 
+    // Se obtienen las categorias para despues formar el breadcrumbs
+    const breadcrumbs = await getBreadcrumbs(listCategories[0].id);
+
     // Se crea el objeto con los resultados obtenidos
 
     const results = {
       categories: listCategories,
       items: items,
+      breadcrumbs: breadcrumbs,
     };
 
     // Respuesta de los resultados
