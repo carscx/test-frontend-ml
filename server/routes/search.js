@@ -1,5 +1,6 @@
 const fetch = require("node-fetch");
 const config = require("../config.json");
+const { isFloat, splitFloat } = require("../utils/numbers.js");
 
 /**
  *
@@ -37,8 +38,10 @@ const searchItems = async (searchQuery) => {
       title: item.title,
       price: {
         currency: item.currency_id,
-        amount: item.price,
-        decimals: 00,
+        amount: isFloat(item.price)
+          ? splitFloat(item.price).integer
+          : item.price,
+        decimals: isFloat(item.price) ? splitFloat(item.price).decimal : 0,
       },
       picture: item.thumbnail,
       condition: item.condition,
