@@ -20,8 +20,40 @@ const searchItems = async (searchQuery) => {
     // Se captura la respuesta
     const json = await response.json();
 
+    // Se realiza un filtro para obtener el listado de categorías.
+    const categories = json.available_filters.filter(
+      (item) => item.id === "category"
+    );
+
+    // Se llena el array de listado de categorías
+    categories[0].values.map((item) => {
+      listCategories.push(item);
+    });
+
+    // Se obtienen los items en el formato requerido
+
+    const items = json.results.map((item) => ({
+      id: item.id,
+      title: item.title,
+      price: {
+        currency: item.currency_id,
+        amount: item.price,
+        decimals: 00,
+      },
+      picture: item.thumbnail,
+      condition: item.condition,
+      free_shipping: item.shipping.free_shipping,
+    }));
+
+    // Se crea el objeto con los resultados obtenidos
+
+    const results = {
+      categories: listCategories,
+      items: items,
+    };
+
     // Respuesta de los resultados
-    return json;
+    return results;
   } catch (error) {
     console.log(error);
   }
