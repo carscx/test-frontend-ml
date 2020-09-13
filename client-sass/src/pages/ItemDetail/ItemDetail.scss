@@ -1,0 +1,85 @@
+@import "../../styles/colors";
+
+.detail__box {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  width: calc(100% - 40px);
+  @media only screen and (min-width: 1080px) {
+    flex-direction: row;
+  }
+  .detail__col__left {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    @media only screen and (min-width: 1080px) {
+      max-width: 680px;
+      width: 65%;
+    }
+    .detail__img {
+      width: 100%;
+      @media only screen and (min-width: 1080px) {
+        max-width: 680px;
+      }
+    }
+    .detail__box__description {
+      margin: 32px 0 0 22px;
+      h2 {
+        font-size: 28px;
+        font-weight: 300;
+        margin: 0;
+      }
+      p {
+        color: $cGrey;
+        font-size: 16px;
+        margin: 32px 0;
+      }
+    }
+  }
+  .detail__col__right {
+    display: flex;
+    flex-direction: column;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 100%;
+    @media only screen and (min-width: 1080px) {
+      width: 35%;
+    }
+    .detail__col__right__header-info {
+      font-size: 14px;
+      margin: 22px 0 16px 0;
+    }
+    .detail_col__right__title {
+      font-size: 24px;
+      margin-bottom: 32px;
+      margin-top: 0px;
+      width: 100%;
+    }
+    .detail__col__right__price {
+      font-size: 46px;
+      font-weight: 300;
+      margin-bottom: 32px;
+      margin-top: 0px;
+      width: 100%;
+      sup {
+        font-size: 20px;
+      }
+    }
+    .detail__col__right__btn-compra {
+      background: $cBlue;
+      color: $cWhite;
+      border: 0;
+      border-radius: 4px;
+      padding: 10px;
+      width: 100%;
+      transition: all 0.4s ease;
+      @media only screen and (min-width: 1080px) {
+        width: calc(100% - 12px);
+      }
+      &:hover {
+        background: $cBlueDark;
+        cursor: pointer;
+      }
+    }
+  }
+}

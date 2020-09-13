@@ -1,0 +1,11 @@
+@import "colors";
+@import "fonts";
+
+body {
+  background: $cGreyE;
+  margin: 0;
+  padding: 0;
+  color: $cBlack;
+  font-family: "ProximaNova-Regular", "Courier New", Courier, monospace,
+    sans-serif;
+}

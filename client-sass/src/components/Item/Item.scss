@@ -1,0 +1,59 @@
+@import "../../styles/colors";
+
+.item {
+  border-bottom: 1px solid $cGreyE;
+  display: flex;
+  flex-direction: column;
+  padding: 16px 0;
+  cursor: pointer;
+  @media only screen and (min-width: 1080px) {
+    flex-direction: row;
+  }
+  .col__left {
+    display: flex;
+    flex-direction: column;
+    max-height: 190px;
+    margin-right: 16px;
+    width: 100%;
+    @media only screen and (min-width: 1080px) {
+      width: 190px;
+    }
+    .col__left__img {
+      border-radius: 4px;
+      height: 100%;
+      object-fit: contain;
+      min-width: 180px;
+      width: 100%;
+    }
+  }
+  .col__right {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 180px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    .col__right__price {
+      font-weight: 300;
+      margin: 0px 0 0;
+      img {
+        margin-left: 10px;
+      }
+    }
+    .col__right__title {
+      font-weight: 300;
+      margin: 32px 0 0;
+    }
+  }
+
+  .col__end {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    max-height: 190px;
+    .col__end__address {
+      margin-left: auto;
+      margin-right: 20px;
+    }
+  }
+}

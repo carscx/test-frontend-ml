@@ -1,0 +1,19 @@
+@import "../../styles/colors";
+
+.header {
+  background: $cPrimary;
+  display: flex;
+  align-items: center;
+  margin: 0;
+  height: 70px;
+  width: 100%;
+  .header__logo {
+    margin: 5px;
+    display: flex;
+    width: 50px;
+    img {
+      object-fit: contain;
+      cursor: pointer;
+    }
+  }
+}
