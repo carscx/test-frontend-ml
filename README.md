@@ -40,8 +40,8 @@ En el archivo `config.json` se pueden modificar los siguientes valores:
 
 Ver carpeta `server/postman` para más información
 
-http://localhost:5000/api/items?q=:query
-http://localhost:5000/api/items/:id
+- http://localhost:5000/api/items?q=:query
+- http://localhost:5000/api/items/:id
 
 ### Cliente `/client`
 
