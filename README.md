@@ -2,6 +2,8 @@
 
 En el proyecto se encuentran dos carpetas principales, `client` y `server`.
 
+Adicionalmente se crea una nueva version del cliente utilizando SASS en lugar de styled-components `client-sass`
+
 ## Requisitos previos
 
 - Instalar <a href="https://nodejs.org/en/download/" target="_blank">Node.js</a>
@@ -48,6 +50,8 @@ Ver carpeta `server/postman` para más información
 El cliente se ha desarrollado en React `v.16.13.1` y creado con `create-react-app`, puede ver más información <a href="https://create-react-app.dev/" target="_blank">aquí</a>.
 
 Para los estilos se ha usado `styled-components` en su versión `5.2.0`, más info en <a href="https://styled-components.com/" target="_blank"> su web</a>.
+
+Se agrega la version en SASS para cumplir con los requisitos del Test. Para ello se utiliza <a href="https://github.com/sass/node-sass" target="_blank">node-sass</a> en su versión `4.14.1`
 
 #### Instalar dependencias front
 
