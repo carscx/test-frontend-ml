@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-
-import { Container } from "../components";
+import { useNavigate } from "react-router-dom";
+import { Alert, Container, Search } from "../components";
 import { cPrimary } from "../styles/colors";
-
 import logoMl from "../assets/images/Logo_ML.png";
 
 const HeaderSt = styled.div`
@@ -25,10 +24,28 @@ const LogoSt = styled.div`
 `;
 
 function Header() {
+  const navigate = useNavigate();
+  const goToHome = () => {
+    navigate(`/`);
+  };
+
+  // const [dataErrors, setDataErrors] = useContext(ErrorsContext);
+  // useEffect(() => {
+  //   setDataErrors({});
+  // }, [setDataErrors]);
+
   return (
-    <HeaderSt>
-      <Container row>HEader</Container>
-    </HeaderSt>
+    <>
+      <HeaderSt>
+        <Container row>
+          <LogoSt onClick={goToHome}>
+            <img src={logoMl} alt="Mercado Libre" title="Mercado Libre" />
+          </LogoSt>
+          <Search />
+        </Container>
+      </HeaderSt>
+      <Alert />
+    </>
   );
 }
 export default Header;

@@ -1,10 +1,14 @@
 const express = require("express");
 const app = express();
+const cors = require("cors");
 const config = require("./config.json");
 const pkg = require("./package.json");
 const port = config.PORT;
 
 const authorInfo = pkg.author; // Obtiene los datos del autor desde el package.json
+
+// Se establece la propiedad cors
+app.use(cors());
 
 // Funcionalidad para la búsqueda de productos
 const search = require("./routes/search");
